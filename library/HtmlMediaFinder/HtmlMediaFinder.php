@@ -25,7 +25,7 @@ class HtmlMediaFinder
 	 */
 	function getDownloadUrl($provider, $htmlSource) {
 		$ddoc = new DOMDocument();
-		$ddoc->loadHTML($htmlSource);
+		@$ddoc->loadHTML($htmlSource);
 		
 		$dxpath = new DOMXPath($ddoc);
 		$elements = $dxpath->query($this->config[$provider]['xpath']);

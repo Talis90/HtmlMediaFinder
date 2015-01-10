@@ -1,0 +1,23 @@
+{
+    "name": "talis90/php-minify",
+    "description": "Get media files download url by given html source code",
+    "authors": [
+        {
+            "name": "Talis90"
+        }
+    ],
+    "type": "library",
+    "keywords": [
+        "media",
+        "php"
+    ],
+    "license": "GPL-3.0",
+    "require": {
+        "php": ">=5.4.4"
+    },
+    "autoload": {
+        "psr-0": {
+            "HtmlMediaFinder\\": "library/"
+        }
+    }
+}
