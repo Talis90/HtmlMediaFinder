@@ -1,36 +1,28 @@
 <?php
 
+namespace HtmlMediaFinder;
+
 /**
- * Get media files download url by given html source code (same as download helper)
+ * Get the download url of a video url
  * 
  * @author Talis90
  */
 class HtmlMediaFinder
 {
-	protected $config;
-	
 	/**
-	 * @param array $config Provider Configuration
+	 * Get the download url of a video url
+	 * @param string $videoUrl
+	 * @return string
 	 */
-	function __construct(array $config) {
-		$this->config = $config;
-	}
-	
-	/**
-	 * Find the downloadable media file in html source file
-	 * 
-	 * @param string $provider Provider name like given in config
-	 * @param string $htmlSource
-	 * @return string downloadable url
-	 */
-	function getDownloadUrl($provider, $htmlSource) {
-		$ddoc = new DOMDocument();
-		@$ddoc->loadHTML($htmlSource);
+	static function getDownloadUrl($videoUrl) {
+		$toplevelDomain = 'streamcloud.eu';
 		
-		$dxpath = new DOMXPath($ddoc);
-		$elements = $dxpath->query($this->config[$provider]['xpath']);
+		if (!is_dir(__FILE__ . 'library/HtmlMediaFinder/ProviderHandler/' . $toplevelDomain)) {
+			throw new \Exception('There is no special implementation for the provider ' . $toplevelDomain . '!');
+		}
 		
-		$downloadUrl = $this->config[$provider]['getUrl']($elements);
-		return $downloadUrl;
+		require_once __FILE__ . 'library/HtmlMediaFinder/ProviderHandler/' . $toplevelDomain . '/Provider.php';
+		$provider = new \Provider($videoUrl);
+		return $provider->getDownloadUrl();
 	}
 }
