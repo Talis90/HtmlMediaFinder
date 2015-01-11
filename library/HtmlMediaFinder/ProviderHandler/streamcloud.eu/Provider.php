@@ -14,7 +14,7 @@ class Provider extends AbstractProvider
 	 * @return string
 	 */
 	function getDownloadUrl() {
-		$inputs = $this->remoteXpathQuery($this->videoUrl, '/html/body/div[3]/div[2]/div[2]/div[7]/form/input[@name]');
+		$inputs = self::remoteXpathQuery($this->videoUrl, '/html/body/div[3]/div[2]/div[2]/div[7]/form/input[@name]');
 		
 		$postFields = [];
 		foreach ($inputs as $input) {
@@ -22,7 +22,7 @@ class Provider extends AbstractProvider
 		}
 		
 		sleep(11);	//10 sek wait-time is required
-		$scriptElements = $this->remoteXpathQuery($this->videoUrl, '/html/body/div[3]/div[2]/div[2]/div[1]/script[3]', $postFields);
+		$scriptElements = self::remoteXpathQuery($this->videoUrl, '/html/body/div[3]/div[2]/div[2]/div[1]/script[3]', $postFields);
 		
 		$textContent = $scriptElements->item(0)->textContent;
 		preg_match('/".*\.mp4"/U', $textContent, $matches);
