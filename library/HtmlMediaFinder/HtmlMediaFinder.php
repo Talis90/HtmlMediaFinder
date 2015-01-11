@@ -15,13 +15,14 @@ class HtmlMediaFinder
 	 * @return string
 	 */
 	static function getDownloadUrl($videoUrl) {
-		$toplevelDomain = 'streamcloud.eu';
+		$toplevelDomain = parse_url($videoUrl);
+		$toplevelDomain = $toplevelDomain['host'];
 		
-		if (!is_dir(__FILE__ . 'library/HtmlMediaFinder/ProviderHandler/' . $toplevelDomain)) {
+		if (!is_dir(__DIR__ . '/ProviderHandler/' . $toplevelDomain)) {
 			throw new \Exception('There is no special implementation for the provider ' . $toplevelDomain . '!');
 		}
 		
-		require_once __FILE__ . 'library/HtmlMediaFinder/ProviderHandler/' . $toplevelDomain . '/Provider.php';
+		require_once __DIR__ . '/ProviderHandler/' . $toplevelDomain . '/Provider.php';
 		$provider = new \Provider($videoUrl);
 		return $provider->getDownloadUrl();
 	}

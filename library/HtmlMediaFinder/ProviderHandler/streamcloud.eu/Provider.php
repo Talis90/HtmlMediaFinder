@@ -1,11 +1,11 @@
 <?php
 
-namespace HtmlMediaFinder\ProviderHandler\streamcloud.eu;
-
 use HtmlMediaFinder\ProviderHandler\AbstractProvider;
 
 /**
  * Handler to get the download url for streamcloud.eu
+ * 
+ * @author Cyberrebell
  */
 class Provider extends AbstractProvider
 {

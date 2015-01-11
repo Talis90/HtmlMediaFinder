@@ -4,6 +4,8 @@ namespace HtmlMediaFinder\ProviderHandler;
 
 /**
  * Abstract Provider Handler with usefull basic features
+ * 
+ * @author Cyberrebell
  */
 abstract class AbstractProvider
 {
@@ -35,10 +37,10 @@ abstract class AbstractProvider
 	 * @return DOMNodeList
 	 */
 	protected function xpathQuery($html, $xpath) {
-		$ddoc = new DOMDocument();
+		$ddoc = new \DOMDocument();
 		@$ddoc->loadHTML($html);
 		
-		$dxpath = new DOMXPath($ddoc);
+		$dxpath = new \DOMXPath($ddoc);
 		return $dxpath->query($xpath);
 	}
 	
