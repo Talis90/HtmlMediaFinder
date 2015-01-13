@@ -12,11 +12,11 @@ class RemoteXpathAdapter
 	 */
 	static function remoteXpathQuery($url, $xpath, array $post = []) {
 		if (count($post) > 0) {
-			$cont = $this->postRequest($url, $post);
+			$cont = self::postRequest($url, $post);
 		} else {
 			$cont = file_get_contents($url);
 		}
-		return $this->xpathQuery($cont, $xpath);
+		return self::xpathQuery($cont, $xpath);
 	}
 	
 	/**

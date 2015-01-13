@@ -25,7 +25,8 @@ class Provider extends AbstractProvider
 		$scriptElements = self::remoteXpathQuery($this->videoUrl, '/html/body/div[3]/div[2]/div[2]/div[1]/script[3]', $postFields);
 		
 		$textContent = $scriptElements->item(0)->textContent;
-		preg_match('/".*\.mp4"/U', $textContent, $matches);
-		return trim(reset($matches), '"');
+		preg_match('/file: ".*\..*"/U', $textContent, $matches);
+		$url = substr(reset($matches), 6);
+		return trim($url, '"');
 	}
 }
