@@ -5,7 +5,7 @@ namespace HtmlMediaFinder\ProviderHandler;
 use HtmlMediaFinder\RemoteXpathAdapter;
 
 /**
- * Abstract Provider Handler with usefull basic features
+ * Abstract Provider Handler with useful basic features
  * 
  * @author Cyberrebell
  */

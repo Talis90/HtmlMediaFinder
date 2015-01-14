@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phpunit colors="true">
+    <testsuite name="htmlMediaFinder">
+        <directory>./</directory>
+    </testsuite>
+    <php>
+		<env name="APPLICATION_ENV" value="testing" />
+    </php>
+    <filter>
+        <whitelist>
+            <directory>../library</directory>
+        </whitelist>
+    </filter>
+</phpunit>
